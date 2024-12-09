@@ -1,0 +1,16 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"       # RabbitMQ AMQP port
+      - "15672:15672"     # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_SERVER_HEARTBEAT: 0
+
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
